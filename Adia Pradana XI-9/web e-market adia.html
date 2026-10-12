@@ -1,0 +1,613 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>YaYang Store - Boneka Plushie Cute & Elegant</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+
+    <style>
+        /* === VARIABEL WARNA (BABY PINK & SOFT NAVY) === */
+        :root {
+            --bg-baby-pink: #fff0f5;
+            --soft-pink: #ffd1dc;
+            --accent-pink: #ff8da1;
+            --hot-pink: #e91e63;
+            --dark-navy: #1b263b;
+            --soft-navy: #2c3e50;
+            --white: #ffffff;
+            --card-shadow: 0 8px 20px rgba(233, 30, 99, 0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Nunito', sans-serif;
+            scroll-behavior: smooth;
+        }
+
+        body {
+            background-color: var(--bg-baby-pink);
+            color: var(--soft-navy);
+            line-height: 1.6;
+        }
+
+        /* === NAVBAR === */
+        header {
+            background-color: var(--white);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(255, 141, 161, 0.15);
+            padding: 15px 8%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-family: 'Fredoka', cursive;
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--hot-pink);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--soft-navy);
+            font-weight: 600;
+            font-size: 15px;
+            transition: color 0.3s;
+        }
+
+        nav a:hover, nav a.active {
+            color: var(--hot-pink);
+        }
+
+        .cart-icon {
+            position: relative;
+            background: var(--bg-baby-pink);
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: var(--dark-navy);
+            font-weight: 700;
+            font-size: 14px;
+            cursor: pointer;
+            border: 1px solid var(--soft-pink);
+        }
+
+        /* === HERO SECTION === */
+        .hero {
+            padding: 60px 8%;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 40px;
+            background: linear-gradient(135deg, #fff0f5 0%, #ffe4e9 100%);
+        }
+
+        .hero-text {
+            max-width: 550px;
+        }
+
+        .hero-text h1 {
+            font-family: 'Fredoka', cursive;
+            font-size: 42px;
+            color: var(--dark-navy);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .hero-text h1 span {
+            color: var(--hot-pink);
+        }
+
+        .hero-text p {
+            font-size: 16px;
+            color: #555;
+            margin-bottom: 25px;
+        }
+
+        .btn-primary {
+            display: inline-block;
+            background-color: var(--hot-pink);
+            color: var(--white);
+            padding: 12px 30px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: 700;
+            box-shadow: 0 4px 12px rgba(233, 30, 99, 0.3);
+            transition: transform 0.2s, background-color 0.2s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            background-color: #d81b60;
+        }
+
+        .hero-banner {
+            width: 380px;
+            height: 280px;
+            background-color: var(--soft-pink);
+            border-radius: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--card-shadow);
+            border: 3px solid var(--white);
+            overflow: hidden;
+        }
+
+        .hero-banner img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* === KATALOG PRODUK === */
+        .container {
+            padding: 60px 8%;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-title h2 {
+            font-family: 'Fredoka', cursive;
+            font-size: 32px;
+            color: var(--dark-navy);
+        }
+
+        .section-title p {
+            color: var(--accent-pink);
+            font-size: 15px;
+            font-weight: 600;
+        }
+
+        .product-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 25px;
+        }
+
+        .product-card {
+            background: var(--white);
+            border-radius: 18px;
+            padding: 18px;
+            box-shadow: var(--card-shadow);
+            text-align: center;
+            transition: transform 0.3s;
+            border: 1px solid #ffeef2;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .product-img {
+            width: 100%;
+            height: 200px;
+            background-color: var(--bg-baby-pink);
+            border-radius: 12px;
+            margin-bottom: 15px;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .product-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .product-card h3 {
+            font-size: 18px;
+            color: var(--dark-navy);
+            margin-bottom: 8px;
+        }
+
+        .product-card .price {
+            font-size: 16px;
+            font-weight: 700;
+            color: var(--hot-pink);
+            margin-bottom: 15px;
+        }
+
+        .btn-secondary {
+            background-color: var(--bg-baby-pink);
+            color: var(--dark-navy);
+            border: 1px solid var(--soft-pink);
+            padding: 10px 18px;
+            border-radius: 20px;
+            font-weight: 700;
+            cursor: pointer;
+            width: 100%;
+            transition: 0.2s;
+        }
+
+        .btn-secondary:hover {
+            background-color: var(--soft-pink);
+            color: var(--dark-navy);
+        }
+
+        /* === DETAIL MODAL === */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(27, 38, 59, 0.4);
+            z-index: 200;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .modal-content {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            max-width: 500px;
+            width: 100%;
+            position: relative;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 22px;
+            cursor: pointer;
+            color: #888;
+        }
+
+        .qty-picker {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin: 15px 0;
+        }
+
+        .qty-btn {
+            width: 32px;
+            height: 32px;
+            border-radius: 50%;
+            border: 1px solid var(--soft-pink);
+            background: var(--bg-baby-pink);
+            font-weight: 700;
+            cursor: pointer;
+        }
+
+        /* === FORM PEMBELIAN / CHECKOUT === */
+        .checkout-section {
+            background-color: var(--white);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-weight: 700;
+            margin-bottom: 8px;
+            font-size: 14px;
+            color: var(--dark-navy);
+        }
+
+        .form-group input, .form-group textarea, .form-group select {
+            width: 100%;
+            padding: 12px 15px;
+            border: 1px solid var(--soft-pink);
+            border-radius: 12px;
+            background-color: var(--bg-baby-pink);
+            font-size: 14px;
+            outline: none;
+        }
+
+        .form-group input:focus, .form-group textarea:focus, .form-group select:focus {
+            border-color: var(--hot-pink);
+            background-color: var(--white);
+        }
+
+        /* === FOOTER === */
+        footer {
+            background-color: var(--dark-navy);
+            color: var(--white);
+            padding: 40px 8% 20px;
+            text-align: center;
+            margin-top: 60px;
+        }
+
+        footer p {
+            font-size: 14px;
+            opacity: 0.8;
+        }
+
+        .footer-brand {
+            font-family: 'Fredoka', cursive;
+            font-size: 22px;
+            color: var(--soft-pink);
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- NAVBAR -->
+    <header>
+        <a href="#" class="logo">🌸 YaYang Store ♡</a>
+        <nav>
+            <ul>
+                <li><a href="#home" class="active">Home</a></li>
+                <li><a href="#produk">Produk</a></li>
+                <li><a href="#tentang">Tentang</a></li>
+                <li><a href="#checkout">Checkout</a></li>
+            </ul>
+        </nav>
+        <div class="cart-icon" onclick="scrollToCheckout()">
+            🛍️ Keranjang (<span id="cart-count">0</span>)
+        </div>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero" id="home">
+        <div class="hero-text">
+            <h1>Teman Peluk Paling <span>Lembut & Menggemaskan</span></h1>
+            <p>Koleksi boneka plushie eksklusif dengan warna baby pink dan desain pilihan. Hadiah sempurna untuk orang tersayang atau koleksi pribadimu!</p>
+            <a href="#produk" class="btn-primary">Lihat Koleksi</a>
+        </div>
+        <div class="hero-banner">
+            <!-- ================= INPUT GAMBAR BANNER / UTAMA DI SINI ================= -->
+            <img src="ISI_NAMA_GAMBAR_BANNER_DI_SINI.jpg" alt="YaYang Store Banner" onerror="this.src='https://via.placeholder.com/380x280/ffd1dc/1b263b?text=YaYang+Store+Banner'">
+            <!-- ====================================================================== -->
+        </div>
+    </section>
+
+    <!-- KATALOG PRODUK -->
+    <section class="container" id="produk">
+        <div class="section-title">
+            <h2>Koleksi Boneka Pilihan</h2>
+            <p>Pilih boneka favoritmu dengan kualitas bahan premium</p>
+        </div>
+
+        <div class="product-grid">
+            <!-- PRODUK 1 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <!-- ================= INPUT GAMBAR 1 DI SINI ================= -->
+                    <img src="pink bunny plushie.jpeg" alt="Bunny Bonnie" onerror="this.src='https://via.placeholder.com/200/fff0f5/e91e63?text=Teddy+Bear'">
+                    <!-- ======================================================== -->
+                </div>
+                <h3>Bunny Bonnie</h3>
+                <div class="price">Rp 125.000</div>
+                <button class="btn-secondary" onclick="openDetail('Bunny Bonnie', 'Rp 125.000', 'Bunny plushie with a cute pink outfit')">Lihat Detail</button>
+            </div>
+
+            <!-- PRODUK 2 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <!-- ================= INPUT GAMBAR 2 DI SINI ================= -->
+                    <img src="unicorn plushie.jpeg" alt="Its a Fluffy Unicorn" onerror="this.src='https://via.placeholder.com/200/fff0f5/e91e63?text=Bunny+Soft'">
+                    <!-- ======================================================== -->
+                </div>
+                <h3>Its a Fluffy Unicorn</h3>
+                <div class="price">Rp 115.000</div>
+                <button class="btn-secondary" onclick="openDetail(Its a Fluffy Unicorn', 'Rp 115.000', 'Unicorn plushie very soft and cute')">Lihat Detail</button>
+            </div>
+
+            <!-- PRODUK 3 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <!-- ================= INPUT GAMBAR 3 DI SINI ================= -->
+                    <img src="elephant plushie.jpeg" alt="The Adorable Elephant" onerror="this.src='https://via.placeholder.com/200/fff0f5/e91e63?text=Cat+Kitty'">
+                    <!-- ======================================================== -->
+                </div>
+                <h3>The Adorable Elephant</h3>
+                <div class="price">Rp 140.000</div>
+                <button class="btn-secondary" onclick="openDetail('The Adorable Elephant', 'Rp 140.000', 'Elephant plushie that will cuddle with you forever.')">Lihat Detail</button>
+            </div>
+
+            <!-- PRODUK 4 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <!-- ================= INPUT GAMBAR 4 DI SINI ================= -->
+                    <img src="bear plushie.jpeg" alt="Mr.Teddy" onerror="this.src='https://via.placeholder.com/200/fff0f5/e91e63?text=Panda+Sweet'">
+                    <!-- ======================================================== -->
+                </div>
+                <h3>Mr.Teddy</h3>
+                <div class="price">Rp 135.000</div>
+                <button class="btn-secondary" onclick="openDetail('Mr.Teddy', 'Rp 135.000', 'Very soft teddy bear that will give you all the warmth in the world.')">Lihat Detail</button>
+            </div>
+
+            <!-- PRODUK 5 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <!-- ================= INPUT GAMBAR 5 DI SINI ================= -->
+                    <img src="sheep plushie.jpeg" alt="Suzy Sheep" onerror="this.src='https://via.placeholder.com/200/fff0f5/e91e63?text=Penguin+Cute'">
+                    <!-- ======================================================== -->
+                </div>
+                <h3>Suzy Sheep</h3>
+                <div class="price">Rp 160.000</div>
+                <button class="btn-secondary" onclick="openDetail('Suzy Sheep', 'Rp 160.000', 'Suzy sheep that will give you all the smile in the world.')">Lihat Detail</button>
+            </div>
+
+            <!-- PRODUK 6 -->
+            <div class="product-card">
+                <div class="product-img">
+                    <!-- ================= INPUT GAMBAR 6 DI SINI ================= -->
+                    <img src="monkey plushie.jpe" alt="The Little Monkey" onerror="this.src='https://via.placeholder.com/200/fff0f5/e91e63?text=Unicorn+Magic'">
+                    <!-- ======================================================== -->
+                </div>
+                <h3>The Little Monkey</h3>
+                <div class="price">Rp 185.000</div>
+                <button class="btn-secondary" onclick="openDetail('The Little Monkey', 'Rp 185.000', 'Monkey plushie that will giggle with you and jump up and down the bed with you.')">Lihat Detail</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- DETAIL MODAL POPUP -->
+    <div class="modal" id="productModal">
+        <div class="modal-content">
+            <span class="close-modal" onclick="closeModal()">&times;</span>
+            <h2 id="modalTitle" style="font-family: 'Fredoka', cursive; color: var(--dark-navy);">Nama Produk</h2>
+            <p id="modalPrice" style="color: var(--hot-pink); font-weight: 700; font-size: 18px; margin: 8px 0;"></p>
+            <p id="modalDesc" style="color: #666; font-size: 14px; margin-bottom: 15px;"></p>
+            
+            <div class="qty-picker">
+                <span>Jumlah:</span>
+                <button class="qty-btn" onclick="changeQty(-1)">-</button>
+                <span id="modalQty" style="font-weight: 700;">1</span>
+                <button class="qty-btn" onclick="changeQty(1)">+</button>
+            </div>
+
+            <button class="btn-primary" style="width: 100%; margin-top: 10px;" onclick="addToCart()">+ Tambahkan ke Pesanan</button>
+        </div>
+    </div>
+
+    <!-- TENTANG KAMI -->
+    <section class="container" id="tentang" style="background-color: var(--white); border-radius: 20px; margin: 0 8%;">
+        <div class="section-title">
+            <h2>Tentang YaYang Store</h2>
+            <p>Toko Boneka Pilihan untuk Momen Spesialmu</p>
+        </div>
+        <p style="text-align: center; max-width: 700px; margin: 0 auto; color: var(--soft-navy);">
+            <strong>YaYang Store</strong> hadir untuk memberikan keceriaan melalui koleksi boneka plushie pilihan berkualitas tinggi. Dibuat dengan bahan velboa super lembut dan isian dakron yang empuk, setiap produk kami dirancang agar nyaman dipeluk dan tahan lama. Kami mengusung perpaduan warna baby pink yang manis serta aksen navy yang anggun.
+        </p>
+    </section>
+
+    <!-- FORM CHECKOUT / PEMBELIAN -->
+    <section class="container" id="checkout">
+        <div class="section-title">
+            <h2>Form Pemesanan</h2>
+            <p>Isi data diri kamu untuk menyelesaikan pesanan</p>
+        </div>
+
+        <div class="checkout-section">
+            <form onsubmit="submitOrder(event)">
+                <div class="form-group">
+                    <label for="nama">Nama Lengkap</label>
+                    <input type="text" id="nama" placeholder="Masukkan nama kamu" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="hp">Nomor WhatsApp/HP</label>
+                    <input type="tel" id="hp" placeholder="08xxxxxxxxxx" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="alamat">Alamat Pengiriman</label>
+                    <textarea id="alamat" rows="3" placeholder="Masukkan alamat lengkap pengiriman" required></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="pilihan-boneka">Pilih Boneka Utama</label>
+                    <select id="pilihan-boneka">
+                        <option value="Bunny Bonnie">Bunny Bonnie - Rp 125.000</option>
+                        <option value="Its A Fluffy Unicorn">Its A Fluffy Unicorn - Rp 115.000</option>
+                        <option value="The Adorable Elephant">The Adorable Elephant - Rp 140.000</option>
+                        <option value="Mr.Teddy">Mr.Teddy - Rp 135.000</option>
+                        <option value="Suzy Sheep">Suzy Sheep - Rp 160.000</option>
+                        <option value="The Little Monkey">The Little Monkey - Rp 185.000</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="pembayaran">Metode Pembayaran</label>
+                    <select id="pembayaran">
+                        <option>Transfer Bank (BCA / Mandiri)</option>
+                        <option>E-Wallet (DANA / GoPay / ShopeePay)</option>
+                        <option>COD (Bayar di Tempat)</option>
+                    </select>
+                </div>
+
+                <button type="submit" class="btn-primary" style="width: 100%;">Konfirmasi & Kirim Pesanan</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer>
+        <div class="footer-brand">🌸 YaYang Store ♡</div>
+        <p>Projek E-Marketplace Informatika SMA Kelas 11</p>
+        <p style="margin-top: 5px; font-size: 12px; opacity: 0.6;">&copy; 2026 YaYang Store. All rights reserved.</p>
+    </footer>
+
+    <!-- JAVASCRIPT LOGIC -->
+    <script>
+        let currentQty = 1;
+        let cartCount = 0;
+        let selectedProduct = '';
+
+        function openDetail(name, price, desc) {
+            selectedProduct = name;
+            document.getElementById('modalTitle').innerText = name;
+            document.getElementById('modalPrice').innerText = price;
+            document.getElementById('modalDesc').innerText = desc;
+            document.getElementById('modalQty').innerText = 1;
+            currentQty = 1;
+            document.getElementById('productModal').style.display = 'flex';
+        }
+
+        function closeModal() {
+            document.getElementById('productModal').style.display = 'none';
+        }
+
+        function changeQty(amount) {
+            if (currentQty + amount >= 1) {
+                currentQty += amount;
+                document.getElementById('modalQty').innerText = currentQty;
+            }
+        }
+
+        function addToCart() {
+            cartCount += currentQty;
+            document.getElementById('cart-count').innerText = cartCount;
+            closeModal();
+            alert(currentQty + 'x ' + selectedProduct + ' berhasil ditambahkan ke keranjang!');
+        }
+
+        function scrollToCheckout() {
+            document.getElementById('checkout').scrollIntoView({ behavior: 'smooth' });
+        }
+
+        function submitOrder(event) {
+            event.preventDefault();
+            const nama = document.getElementById('nama').value;
+            alert('Terima kasih ' + nama + '! Pesanan kamu di YaYang Store berhasil dikirim.');
+        }
+    </script>
+</body>
+</html>
